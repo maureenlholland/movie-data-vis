@@ -4,9 +4,1672 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Director Galaxies</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
   </head>
   <body>
     <!-- svg container? -->
     <!-- script for d3 -->
+    <svg id="spikeLee" />
+    <script>
+      const container = document.getElementById("spikeLee");
+
+      const spikeData = {
+        name: "Spike Lee",
+        id: 5281,
+        movies: [
+          {
+            title: "Inside Man",
+            release_date: "2006-03-17",
+            runtime: 129,
+            budget: 45000000,
+            revenue: 186003591,
+            genres: ["Crime", "Drama", "Thriller"],
+            actors: [
+              {
+                id: 5292,
+                name: "Denzel Washington",
+              },
+              {
+                id: 2296,
+                name: "Clive Owen",
+              },
+              {
+                id: 1038,
+                name: "Jodie Foster",
+              },
+              {
+                id: 290,
+                name: "Christopher Plummer",
+              },
+              {
+                id: 5293,
+                name: "Willem Dafoe",
+              },
+              {
+                id: 5294,
+                name: "Chiwetel Ejiofor",
+              },
+              {
+                id: 5295,
+                name: "Carlos Andrés Gómez",
+              },
+              {
+                id: 4889,
+                name: "Kim Director",
+              },
+              {
+                id: 5296,
+                name: "James Ransone",
+              },
+              {
+                id: 5297,
+                name: "Bernie Rachelle",
+              },
+              {
+                id: 1986,
+                name: "Peter Gerety",
+              },
+              {
+                id: 5298,
+                name: "Victor Colicchio",
+              },
+              {
+                id: 5299,
+                name: "Cassandra Freeman",
+              },
+              {
+                id: 5300,
+                name: "Peter Frechette",
+              },
+              {
+                id: 5302,
+                name: "Gerry Vichi",
+              },
+              {
+                id: 5301,
+                name: "Waris Ahluwalia",
+              },
+              {
+                id: 5303,
+                name: "Rafael Osorio",
+              },
+              {
+                id: 5304,
+                name: 'Rodney "Bear" Jackson',
+              },
+              {
+                id: 15028,
+                name: "Daryl Mitchell",
+              },
+              {
+                id: 77264,
+                name: "Ashlie Atkinson",
+              },
+            ],
+            dop: [
+              {
+                id: 4867,
+                name: "Matthew Libatique",
+              },
+            ],
+            editor: [
+              {
+                id: 5289,
+                name: "Barry Alexander Brown",
+              },
+            ],
+          },
+          {
+            title: "25th Hour",
+            release_date: "2002-12-16",
+            runtime: 135,
+            budget: 5000000,
+            revenue: 24000000,
+            genres: ["Crime", "Drama"],
+            actors: [
+              {
+                id: 819,
+                name: "Edward Norton",
+              },
+              {
+                id: 1233,
+                name: "Philip Seymour Hoffman",
+              },
+              {
+                id: 12834,
+                name: "Barry Pepper",
+              },
+              {
+                id: 5916,
+                name: "Rosario Dawson",
+              },
+              {
+                id: 10690,
+                name: "Anna Paquin",
+              },
+              {
+                id: 1248,
+                name: "Brian Cox",
+              },
+              {
+                id: 27036,
+                name: "Tony Siragusa",
+              },
+              {
+                id: 27037,
+                name: "Levani",
+              },
+              {
+                id: 1255887,
+                name: "Misha Kuznetsov",
+              },
+              {
+                id: 17490,
+                name: "Isiah Whitlock Jr.",
+              },
+              {
+                id: 51865,
+                name: "Michael Genet",
+              },
+              {
+                id: 543256,
+                name: "Patrice O'Neal",
+              },
+              {
+                id: 122546,
+                name: "Al Palagonia",
+              },
+              {
+                id: 11022,
+                name: "Aaron Stanford",
+              },
+              {
+                id: 37046,
+                name: "Dania Ramirez",
+              },
+              {
+                id: 1567422,
+                name: "Larissa Drekonja",
+              },
+              {
+                id: 1214165,
+                name: "Michole Briana White",
+              },
+              {
+                id: 80167,
+                name: "Tony Devon",
+              },
+              {
+                id: 20491,
+                name: "Vanessa Ferlito",
+              },
+              {
+                id: 33662,
+                name: "Coati Mundi",
+              },
+            ],
+            dop: [
+              {
+                id: 275,
+                name: "Rodrigo Prieto",
+              },
+            ],
+            editor: [
+              {
+                id: 5289,
+                name: "Barry Alexander Brown",
+              },
+            ],
+          },
+          {
+            title: "Jungle Fever",
+            release_date: "1991-06-07",
+            runtime: 132,
+            budget: 14000000,
+            revenue: 32482682,
+            genres: ["Drama", "Romance"],
+            actors: [
+              {
+                id: 10814,
+                name: "Wesley Snipes",
+              },
+              {
+                id: 18750,
+                name: "Annabella Sciorra",
+              },
+              {
+                id: 5281,
+                name: "Spike Lee",
+              },
+              {
+                id: 15531,
+                name: "Ossie Davis",
+              },
+              {
+                id: 15532,
+                name: "Ruby Dee",
+              },
+              {
+                id: 2231,
+                name: "Samuel L. Jackson",
+              },
+              {
+                id: 62127,
+                name: "Lonette McKee",
+              },
+              {
+                id: 1241,
+                name: "John Turturro",
+              },
+              {
+                id: 7164,
+                name: "Frank Vincent",
+              },
+              {
+                id: 5401,
+                name: "Anthony Quinn",
+              },
+              {
+                id: 4587,
+                name: "Halle Berry",
+              },
+              {
+                id: 9782,
+                name: "Tyra Ferrell",
+              },
+              {
+                id: 77074,
+                name: "Veronica Webb",
+              },
+              {
+                id: 2753601,
+                name: "Veronica Timbers",
+              },
+              {
+                id: 183879,
+                name: "David Dundara",
+              },
+              {
+                id: 11486,
+                name: "Michael Imperioli",
+              },
+              {
+                id: 32897,
+                name: "Nicholas Turturro",
+              },
+              {
+                id: 59281,
+                name: "Steven Randazzo",
+              },
+              {
+                id: 17928,
+                name: "Joseph D'Onofrio",
+              },
+              {
+                id: 1010,
+                name: "Michael Badalucco",
+              },
+            ],
+            dop: [
+              {
+                id: 15521,
+                name: "Ernest R. Dickerson",
+              },
+            ],
+            editor: [
+              {
+                id: 18747,
+                name: "Sam Pollard",
+              },
+            ],
+          },
+          {
+            title: "Malcolm X",
+            release_date: "1992-11-18",
+            runtime: 202,
+            budget: 34000000,
+            revenue: 48169908,
+            genres: ["Drama", "History"],
+            actors: [
+              {
+                id: 5292,
+                name: "Denzel Washington",
+              },
+              {
+                id: 9780,
+                name: "Angela Bassett",
+              },
+              {
+                id: 8354,
+                name: "Albert Hall",
+              },
+              {
+                id: 19739,
+                name: "Al Freeman, Jr.",
+              },
+              {
+                id: 18792,
+                name: "Delroy Lindo",
+              },
+              {
+                id: 5281,
+                name: "Spike Lee",
+              },
+              {
+                id: 4604,
+                name: "Theresa Randle",
+              },
+              {
+                id: 19740,
+                name: "Kate Vernon",
+              },
+              {
+                id: 62127,
+                name: "Lonette McKee",
+              },
+              {
+                id: 159887,
+                name: "Tommy Hollis",
+              },
+              {
+                id: 81372,
+                name: "James McDaniel",
+              },
+              {
+                id: 75356,
+                name: "Ernest Lee Thomas",
+              },
+              {
+                id: 7488,
+                name: "Jean-Claude La Marre",
+              },
+              {
+                id: 1039,
+                name: "Peter Boyle",
+              },
+              {
+                id: 650,
+                name: "Karen Allen",
+              },
+              {
+                id: 290,
+                name: "Christopher Plummer",
+              },
+              {
+                id: 1385380,
+                name: "Larry McCoy",
+              },
+              {
+                id: 1590323,
+                name: "Maurice Sneed",
+              },
+              {
+                id: 5578,
+                name: "Debi Mazar",
+              },
+              {
+                id: 171167,
+                name: "Phyllis Yvonne Stickney",
+              },
+            ],
+            dop: [
+              {
+                id: 15521,
+                name: "Ernest R. Dickerson",
+              },
+            ],
+            editor: [
+              {
+                id: 5289,
+                name: "Barry Alexander Brown",
+              },
+            ],
+          },
+          {
+            title: "Summer of Sam",
+            release_date: "1999-07-02",
+            runtime: 142,
+            budget: 22000000,
+            revenue: 19288130,
+            genres: ["Thriller", "Drama", "Crime", "Romance"],
+            actors: [
+              {
+                id: 5723,
+                name: "John Leguizamo",
+              },
+              {
+                id: 3490,
+                name: "Adrien Brody",
+              },
+              {
+                id: 23931,
+                name: "Mira Sorvino",
+              },
+              {
+                id: 18285,
+                name: "Jennifer Esposito",
+              },
+              {
+                id: 18313,
+                name: "Michael Rispoli",
+              },
+              {
+                id: 56691,
+                name: "Saverio Guerra",
+              },
+              {
+                id: 4890,
+                name: "Brian Tarantina",
+              },
+              {
+                id: 122546,
+                name: "Al Palagonia",
+              },
+              {
+                id: 18287,
+                name: "Ken Garito",
+              },
+              {
+                id: 10739,
+                name: "Bebe Neuwirth",
+              },
+              {
+                id: 5699,
+                name: "Patti LuPone",
+              },
+              {
+                id: 5170,
+                name: "Mike Starr",
+              },
+              {
+                id: 57829,
+                name: "Anthony LaPaglia",
+              },
+              {
+                id: 40377,
+                name: "Roger Guenveur Smith",
+              },
+              {
+                id: 856,
+                name: "Ben Gazzara",
+              },
+              {
+                id: 1217553,
+                name: "Joe Lisi",
+              },
+              {
+                id: 2103479,
+                name: "James Reno",
+              },
+              {
+                id: 28033,
+                name: "Arthur J. Nascarella",
+              },
+              {
+                id: 47879,
+                name: "John Savage",
+              },
+              {
+                id: 1227456,
+                name: "Jimmy Breslin",
+              },
+            ],
+            dop: [
+              {
+                id: 313,
+                name: "Ellen Kuras",
+              },
+            ],
+            editor: [
+              {
+                id: 5289,
+                name: "Barry Alexander Brown",
+              },
+            ],
+          },
+          {
+            title: "Clockers",
+            release_date: "1995-09-15",
+            runtime: 128,
+            budget: 25000000,
+            revenue: 13071518,
+            genres: ["Mystery", "Crime", "Drama"],
+            actors: [
+              {
+                id: 1037,
+                name: "Harvey Keitel",
+              },
+              {
+                id: 1241,
+                name: "John Turturro",
+              },
+              {
+                id: 18792,
+                name: "Delroy Lindo",
+              },
+              {
+                id: 327,
+                name: "Mekhi Phifer",
+              },
+              {
+                id: 21353,
+                name: "Isaiah Washington",
+              },
+              {
+                id: 65827,
+                name: "Keith David",
+              },
+              {
+                id: 98887,
+                name: "Peewee Love",
+              },
+              {
+                id: 21848,
+                name: "Regina Taylor",
+              },
+              {
+                id: 98889,
+                name: "Thomas Jefferson Byrd",
+              },
+              {
+                id: 86462,
+                name: "Sticky Fingaz",
+              },
+              {
+                id: 59568,
+                name: "Fredro Starr",
+              },
+              {
+                id: 1333665,
+                name: "Elvis Nolasco",
+              },
+              {
+                id: 156844,
+                name: "Lawrence B. Adisa",
+              },
+              {
+                id: 91508,
+                name: "Hassan Johnson",
+              },
+              {
+                id: 140178,
+                name: "Frances Foster",
+              },
+              {
+                id: 11486,
+                name: "Michael Imperioli",
+              },
+              {
+                id: 80759,
+                name: "Lisa Arrindell",
+              },
+              {
+                id: 3137,
+                name: "Paul Calderon",
+              },
+              {
+                id: 166893,
+                name: "Brendan Kelly",
+              },
+              {
+                id: 5170,
+                name: "Mike Starr",
+              },
+            ],
+            dop: [
+              {
+                id: 1614965,
+                name: "Malik Hassan Sayeed",
+              },
+            ],
+            editor: [
+              {
+                id: 18747,
+                name: "Sam Pollard",
+              },
+            ],
+          },
+          {
+            title: "Miracle at St. Anna",
+            release_date: "2008-09-15",
+            runtime: 160,
+            budget: 45000000,
+            revenue: 9323833,
+            genres: ["Drama", "War"],
+            actors: [
+              {
+                id: 15543,
+                name: "Derek Luke",
+              },
+              {
+                id: 8177,
+                name: "Michael Ealy",
+              },
+              {
+                id: 10964,
+                name: "Laz Alonso",
+              },
+              {
+                id: 1241,
+                name: "John Turturro",
+              },
+              {
+                id: 21965,
+                name: "Valentina Cervi",
+              },
+              {
+                id: 24045,
+                name: "Joseph Gordon-Levitt",
+              },
+              {
+                id: 5723,
+                name: "John Leguizamo",
+              },
+              {
+                id: 11703,
+                name: "Kerry Washington",
+              },
+              {
+                id: 61962,
+                name: "D. B. Sweeney",
+              },
+              {
+                id: 334,
+                name: "Omar Benson Miller",
+              },
+              {
+                id: 17839,
+                name: "Pierfrancesco Favino",
+              },
+              {
+                id: 41556,
+                name: "Omari Hardwick",
+              },
+              {
+                id: 27208,
+                name: "Omero Antonutti",
+              },
+              {
+                id: 7803,
+                name: "Christian Berkel",
+              },
+              {
+                id: 5644,
+                name: "Alexandra Maria Lara",
+              },
+              {
+                id: 27627,
+                name: "Waldemar Kobus",
+              },
+              {
+                id: 4920,
+                name: "Oliver Korittke",
+              },
+              {
+                id: 4796,
+                name: "Alexander Beyer",
+              },
+              {
+                id: 27740,
+                name: "Walton Goggins",
+              },
+              {
+                id: 1457293,
+                name: "Matteo Sciabordi",
+              },
+            ],
+            dop: [
+              {
+                id: 4867,
+                name: "Matthew Libatique",
+              },
+            ],
+            editor: [
+              {
+                id: 5289,
+                name: "Barry Alexander Brown",
+              },
+            ],
+          },
+          {
+            title: "He Got Game",
+            release_date: "1998-05-01",
+            runtime: 136,
+            budget: 25000000,
+            revenue: 21567853,
+            genres: ["Drama"],
+            actors: [
+              {
+                id: 5292,
+                name: "Denzel Washington",
+              },
+              {
+                id: 57685,
+                name: "Ray Allen",
+              },
+              {
+                id: 5916,
+                name: "Rosario Dawson",
+              },
+              {
+                id: 57686,
+                name: "Hill Harper",
+              },
+              {
+                id: 102894,
+                name: "Jill Kelly",
+              },
+              {
+                id: 544069,
+                name: "Chasey Lain",
+              },
+              {
+                id: 1241,
+                name: "John Turturro",
+              },
+              {
+                id: 35806,
+                name: "Shaquille O'Neal",
+              },
+              {
+                id: 1211812,
+                name: "Charles Barkley",
+              },
+              {
+                id: 23678,
+                name: "Michael Jordan",
+              },
+              {
+                id: 63,
+                name: "Milla Jovovich",
+              },
+              {
+                id: 13726,
+                name: "Ned Beatty",
+              },
+              {
+                id: 1215522,
+                name: "Robin Roberts",
+              },
+              {
+                id: 124576,
+                name: "Scottie Pippen",
+              },
+              {
+                id: 122447,
+                name: "Reggie Miller",
+              },
+              {
+                id: 163554,
+                name: "Bill Walton",
+              },
+              {
+                id: 1224931,
+                name: "Dick Vitale",
+              },
+              {
+                id: 1865988,
+                name: "Bobby Cremins",
+              },
+              {
+                id: 1865990,
+                name: "Rick Pitino",
+              },
+              {
+                id: 1865991,
+                name: "Jim Boeheim",
+              },
+            ],
+            dop: [
+              {
+                id: 313,
+                name: "Ellen Kuras",
+              },
+              {
+                id: 1614965,
+                name: "Malik Hassan Sayeed",
+              },
+            ],
+            editor: [
+              {
+                id: 5289,
+                name: "Barry Alexander Brown",
+              },
+            ],
+          },
+          {
+            title: "She's Gotta Have It",
+            release_date: "1986-08-08",
+            runtime: 84,
+            budget: 175000,
+            revenue: 7137503,
+            genres: ["Comedy", "Romance"],
+            actors: [
+              {
+                id: 99358,
+                name: "Tracy Camilla Johns",
+              },
+              {
+                id: 99359,
+                name: "Tommy Redmond Hicks",
+              },
+              {
+                id: 1341524,
+                name: "John Canada Terrell",
+              },
+              {
+                id: 5281,
+                name: "Spike Lee",
+              },
+              {
+                id: 99361,
+                name: "Raye Dowell",
+              },
+              {
+                id: 13602,
+                name: "Joie Lee",
+              },
+              {
+                id: 3978,
+                name: "S. Epatha Merkerson",
+              },
+              {
+                id: 15520,
+                name: "Bill Lee",
+              },
+              {
+                id: 2072439,
+                name: "Cheryl Burr",
+              },
+              {
+                id: 2072440,
+                name: "Aaron Dugger",
+              },
+              {
+                id: 546319,
+                name: "Stephanie Covington",
+              },
+              {
+                id: 2072441,
+                name: "Renata Cobbs",
+              },
+              {
+                id: 2072442,
+                name: "Cheryl D. Singleton",
+              },
+              {
+                id: 959805,
+                name: "Monty Ross",
+              },
+              {
+                id: 40893,
+                name: "Tiziano Cortini",
+              },
+              {
+                id: 1607841,
+                name: "Erik Dellums",
+              },
+              {
+                id: 68215,
+                name: "Reginald Hudlin",
+              },
+              {
+                id: 154216,
+                name: "Eric Payne",
+              },
+              {
+                id: 1235444,
+                name: "Marcus Turner",
+              },
+              {
+                id: 2666466,
+                name: "Gerard Brown",
+              },
+            ],
+            dop: [
+              {
+                id: 15521,
+                name: "Ernest R. Dickerson",
+              },
+            ],
+            editor: [
+              {
+                id: 5281,
+                name: "Spike Lee",
+              },
+            ],
+          },
+          {
+            title: "Mo' Better Blues",
+            release_date: "1990-08-03",
+            runtime: 129,
+            budget: 10000000,
+            revenue: 16153593,
+            genres: ["Drama", "Romance", "Music", "Comedy"],
+            actors: [
+              {
+                id: 5292,
+                name: "Denzel Washington",
+              },
+              {
+                id: 5281,
+                name: "Spike Lee",
+              },
+              {
+                id: 10814,
+                name: "Wesley Snipes",
+              },
+              {
+                id: 4808,
+                name: "Giancarlo Esposito",
+              },
+              {
+                id: 1241,
+                name: "John Turturro",
+              },
+              {
+                id: 2231,
+                name: "Samuel L. Jackson",
+              },
+              {
+                id: 17840,
+                name: "Charlie Murphy",
+              },
+              {
+                id: 32897,
+                name: "Nicholas Turturro",
+              },
+              {
+                id: 15535,
+                name: "Robin Harris",
+              },
+              {
+                id: 13602,
+                name: "Joie Lee",
+              },
+              {
+                id: 87117,
+                name: "Cynda Williams",
+              },
+              {
+                id: 146253,
+                name: "Flavor Flav",
+              },
+              {
+                id: 5502,
+                name: "Bill Nunn",
+              },
+              {
+                id: 1911,
+                name: "Dick Anthony Williams",
+              },
+              {
+                id: 99358,
+                name: "Tracy Camilla Johns",
+              },
+              {
+                id: 33662,
+                name: "Coati Mundi",
+              },
+            ],
+            dop: [
+              {
+                id: 15521,
+                name: "Ernest R. Dickerson",
+              },
+            ],
+            editor: [
+              {
+                id: 18747,
+                name: "Sam Pollard",
+              },
+            ],
+          },
+          {
+            title: "Oldboy",
+            release_date: "2013-11-14",
+            runtime: 104,
+            budget: 30000000,
+            revenue: 5186767,
+            genres: ["Drama", "Thriller", "Mystery", "Action"],
+            actors: [
+              {
+                id: 16851,
+                name: "Josh Brolin",
+              },
+              {
+                id: 550843,
+                name: "Elizabeth Olsen",
+              },
+              {
+                id: 2231,
+                name: "Samuel L. Jackson",
+              },
+              {
+                id: 82191,
+                name: "Sharlto Copley",
+              },
+              {
+                id: 129101,
+                name: "Lance Reddick",
+              },
+              {
+                id: 11486,
+                name: "Michael Imperioli",
+              },
+              {
+                id: 7133,
+                name: "Max Casella",
+              },
+              {
+                id: 4255,
+                name: "Richard Portnow",
+              },
+              {
+                id: 1181354,
+                name: "Ilfenesh Hadera",
+              },
+              {
+                id: 130769,
+                name: "Grey Damon",
+              },
+              {
+                id: 17838,
+                name: "Rami Malek",
+              },
+              {
+                id: 5296,
+                name: "James Ransone",
+              },
+              {
+                id: 58643,
+                name: "Linda Emond",
+              },
+              {
+                id: 1181326,
+                name: "Hannah Simone",
+              },
+              {
+                id: 139820,
+                name: "Pom Klementieff",
+              },
+              {
+                id: 1605398,
+                name: "Violet Hill",
+              },
+              {
+                id: 95358,
+                name: "Elvy Yost",
+              },
+              {
+                id: 1748388,
+                name: "Gino Galento",
+              },
+              {
+                id: 577478,
+                name: "Hannah Ware",
+              },
+              {
+                id: 1049830,
+                name: "Kerry Cahill",
+              },
+            ],
+            dop: [
+              {
+                id: 54926,
+                name: "Sean Bobbitt",
+              },
+            ],
+            editor: [
+              {
+                id: 5289,
+                name: "Barry Alexander Brown",
+              },
+            ],
+          },
+          {
+            title: "Chi-Raq",
+            release_date: "2015-12-04",
+            runtime: 127,
+            budget: 0,
+            revenue: 0,
+            genres: ["Drama", "Crime", "Comedy"],
+            actors: [
+              {
+                id: 36811,
+                name: "Nick Cannon",
+              },
+              {
+                id: 970219,
+                name: "Teyonah Parris",
+              },
+              {
+                id: 10814,
+                name: "Wesley Snipes",
+              },
+              {
+                id: 9780,
+                name: "Angela Bassett",
+              },
+              {
+                id: 2231,
+                name: "Samuel L. Jackson",
+              },
+              {
+                id: 3036,
+                name: "John Cusack",
+              },
+              {
+                id: 15565,
+                name: "Jennifer Hudson",
+              },
+              {
+                id: 1737,
+                name: "David Patrick Kelly",
+              },
+              {
+                id: 61962,
+                name: "D. B. Sweeney",
+              },
+              {
+                id: 4169,
+                name: "Dave Chappelle",
+              },
+              {
+                id: 2202,
+                name: "Steve Harris",
+              },
+              {
+                id: 9464,
+                name: "Harry Lennix",
+              },
+              {
+                id: 1531582,
+                name: "Anya Engel-Adams",
+              },
+              {
+                id: 1531584,
+                name: "Ebony Joy",
+              },
+              {
+                id: 1531605,
+                name: "Erin Allen Kane",
+              },
+              {
+                id: 1531583,
+                name: "Michelle Mitchenor",
+              },
+              {
+                id: 219654,
+                name: "Felicia Pearson",
+              },
+              {
+                id: 1034453,
+                name: "La La Anthony",
+              },
+              {
+                id: 1531585,
+                name: "Val Warner",
+              },
+              {
+                id: 1531586,
+                name: "Sarunas J. Jackson",
+              },
+            ],
+            dop: [
+              {
+                id: 4867,
+                name: "Matthew Libatique",
+              },
+            ],
+            editor: [
+              {
+                id: 1003175,
+                name: "Ryan Denmark",
+              },
+              {
+                id: 1538027,
+                name: "Hye Mee Na",
+              },
+            ],
+          },
+          {
+            title: "BlacKkKlansman",
+            release_date: "2018-07-30",
+            runtime: 135,
+            budget: 15000000,
+            revenue: 48686605,
+            genres: ["Crime", "Drama", "History", "Comedy"],
+            actors: [
+              {
+                id: 1117313,
+                name: "John David Washington",
+              },
+              {
+                id: 1023139,
+                name: "Adam Driver",
+              },
+              {
+                id: 1606394,
+                name: "Laura Harrier",
+              },
+              {
+                id: 17052,
+                name: "Topher Grace",
+              },
+              {
+                id: 82857,
+                name: "Jasper Pääkkönen",
+              },
+              {
+                id: 7447,
+                name: "Alec Baldwin",
+              },
+              {
+                id: 33162,
+                name: "Harry Belafonte",
+              },
+              {
+                id: 124909,
+                name: "Danny Hoch",
+              },
+              {
+                id: 31512,
+                name: "Robert John Burke",
+              },
+              {
+                id: 77264,
+                name: "Ashlie Atkinson",
+              },
+              {
+                id: 2089988,
+                name: "Jared Johnston",
+              },
+              {
+                id: 5353,
+                name: "Michael J. Burg",
+              },
+              {
+                id: 1719596,
+                name: "Ato Blankson-Wood",
+              },
+              {
+                id: 1294982,
+                name: "Paul Walter Hauser",
+              },
+              {
+                id: 2089986,
+                name: "Ryan Preimesberger",
+              },
+              {
+                id: 54883,
+                name: "Michael Buscemi",
+              },
+              {
+                id: 1154054,
+                name: "Corey Hawkins",
+              },
+              {
+                id: 2089985,
+                name: "Elise Hudson",
+              },
+              {
+                id: 143017,
+                name: "Frederick Weller",
+              },
+              {
+                id: 17490,
+                name: "Isiah Whitlock Jr.",
+              },
+            ],
+            dop: [
+              {
+                id: 1266520,
+                name: "Chayse Irvin",
+              },
+            ],
+            editor: [
+              {
+                id: 5289,
+                name: "Barry Alexander Brown",
+              },
+            ],
+          },
+          {
+            title: "Da 5 Bloods",
+            release_date: "2020-06-12",
+            runtime: 156,
+            budget: 45000000,
+            revenue: 0,
+            genres: ["War", "Drama"],
+            actors: [
+              {
+                id: 18792,
+                name: "Delroy Lindo",
+              },
+              {
+                id: 1674162,
+                name: "Jonathan Majors",
+              },
+              {
+                id: 61011,
+                name: "Clarke Peters",
+              },
+              {
+                id: 145113,
+                name: "Norm Lewis",
+              },
+              {
+                id: 17490,
+                name: "Isiah Whitlock Jr.",
+              },
+              {
+                id: 59373,
+                name: "Mélanie Thierry",
+              },
+              {
+                id: 1294982,
+                name: "Paul Walter Hauser",
+              },
+              {
+                id: 82857,
+                name: "Jasper Pääkkönen",
+              },
+              {
+                id: 127451,
+                name: "Johnny Trí Nguyễn",
+              },
+              {
+                id: 2675920,
+                name: "Lê Y Lan",
+              },
+              {
+                id: 2675933,
+                name: "Nguyen Ngoc Lâm",
+              },
+              {
+                id: 2675936,
+                name: "Sandy Huong Pham",
+              },
+              {
+                id: 1003,
+                name: "Jean Reno",
+              },
+              {
+                id: 172069,
+                name: "Chadwick Boseman",
+              },
+              {
+                id: 91378,
+                name: "Van Veronica Ngo",
+              },
+              {
+                id: 2675938,
+                name: "Nguyen Anh Tuan",
+              },
+              {
+                id: 2675939,
+                name: "Duc Luong",
+              },
+              {
+                id: 2675940,
+                name: "Quoc Tuan",
+              },
+              {
+                id: 2675941,
+                name: "Tran Minh Thuong",
+              },
+              {
+                id: 2675942,
+                name: "Hoang Sang",
+              },
+            ],
+            dop: [
+              {
+                id: 9040,
+                name: "Newton Thomas Sigel",
+              },
+            ],
+            editor: [
+              {
+                id: 1775559,
+                name: "Adam Gough",
+              },
+            ],
+          },
+          {
+            title: "Do the Right Thing",
+            release_date: "1989-06-14",
+            runtime: 120,
+            budget: 6500000,
+            revenue: 37295445,
+            genres: ["Drama"],
+            actors: [
+              {
+                id: 1004,
+                name: "Danny Aiello",
+              },
+              {
+                id: 15531,
+                name: "Ossie Davis",
+              },
+              {
+                id: 15532,
+                name: "Ruby Dee",
+              },
+              {
+                id: 6396,
+                name: "Richard Edson",
+              },
+              {
+                id: 4808,
+                name: "Giancarlo Esposito",
+              },
+              {
+                id: 5281,
+                name: "Spike Lee",
+              },
+              {
+                id: 5502,
+                name: "Bill Nunn",
+              },
+              {
+                id: 1241,
+                name: "John Turturro",
+              },
+              {
+                id: 15534,
+                name: "Paul Benjamin",
+              },
+              {
+                id: 13936,
+                name: "Frankie Faison",
+              },
+              {
+                id: 15535,
+                name: "Robin Harris",
+              },
+              {
+                id: 13602,
+                name: "Joie Lee",
+              },
+              {
+                id: 30488,
+                name: "Miguel Sandoval",
+              },
+              {
+                id: 128597,
+                name: "Rick Aiello",
+              },
+              {
+                id: 47879,
+                name: "John Savage",
+              },
+              {
+                id: 2231,
+                name: "Samuel L. Jackson",
+              },
+              {
+                id: 4810,
+                name: "Rosie Perez",
+              },
+              {
+                id: 40377,
+                name: "Roger Guenveur Smith",
+              },
+              {
+                id: 15536,
+                name: "Steve White",
+              },
+              {
+                id: 78029,
+                name: "Martin Lawrence",
+              },
+            ],
+            dop: [
+              {
+                id: 15521,
+                name: "Ernest R. Dickerson",
+              },
+            ],
+            editor: [
+              {
+                id: 5289,
+                name: "Barry Alexander Brown",
+              },
+            ],
+          },
+        ],
+      };
+
+      // create svg container
+      //
+      // set the dimensions and margins of the graph
+      var width = 1000;
+      var height = 1000;
+
+      // append the svg object to the body of the page
+      var svg = d3
+        .select(container)
+        .attr("width", width)
+        .attr("height", height);
+
+      const formattedData = spikeData.movies
+        .reduce((collaborators, movie, i) => {
+          const actors = movie.actors.map((actor) => ({
+            ...actor,
+            job: "actor",
+          }));
+          const editor = movie.editor.map((editor) => ({
+            ...editor,
+            job: "editor",
+          }));
+          const dop = movie.dop.map((dop) => ({ ...dop, job: "dop" }));
+          const people = [...actors, ...editor, ...dop];
+
+          if (i > 0) {
+            const updatedCollaborators = [...collaborators];
+            people.forEach((person) => {
+              const existingIndex = collaborators.findIndex(
+                (collaborator) => collaborator.id === person.id
+              );
+              if (existingIndex >= 0) {
+                updatedCollaborators[existingIndex].appearances += 1;
+              } else {
+                updatedCollaborators.push({ ...person, appearances: 1 });
+              }
+            });
+            return updatedCollaborators;
+          }
+
+          return people.map((collaborator) => ({
+            ...collaborator,
+            appearances: 1,
+          }));
+        }, [])
+        .filter((collaborator) => collaborator.appearances > 1);
+
+      const sizeScale = d3
+        .scaleLinear()
+        .domain(d3.extent(formattedData, (d) => d.appearances))
+        .range([0.2, 0.8]);
+
+      const collaboratorList = formattedData.map((collaborator) => {
+        return {
+          job: collaborator.job,
+          size: sizeScale(collaborator.appearances),
+        };
+      });
+
+      console.log(collaboratorList);
+
+      const moon = svg
+        .selectAll(".moon")
+        .data(collaboratorList.filter((d) => d.job === "editor"))
+        .enter()
+        .append("path")
+        .classed("moon", true)
+        .attr("d", "M0,0 A30 30 0 1 1 -15 40 A20 20 0 1 0 0 0")
+        .attr("fill", "aliceblue");
+
+      const sun = svg
+        .selectAll(".sun")
+        .data(collaboratorList.filter((d) => d.job === "dop"))
+        .enter()
+        .append("circle")
+        .classed("sun", true)
+        .attr("cx", 0)
+        .attr("cy", 0)
+        .attr("r", 40)
+        .attr("fill", "orange");
+
+      const star = svg
+        .selectAll(".star")
+        .data(collaboratorList.filter((d) => d.job === "actor"))
+        .join((enter) => {
+          const g = enter.append("g").classed("star", true);
+          g.selectAll("polygon")
+            .data([1, 2, 3, 4, 5])
+            .join("polygon")
+            .attr("points", "-10,0 0,-40, 10,0")
+            .attr("transform", (d, i) => `rotate(${(i * 360) / 5})`)
+            .attr("fill", "gold");
+          return g;
+        });
+
+      const node = svg.selectAll(".sun, .moon, .star");
+
+      var simulation = d3
+        .forceSimulation()
+        .force(
+          "center",
+          d3
+            .forceCenter()
+            .x(width / 2)
+            .y(height / 2)
+        ) // Attraction to the center of the svg area
+        .force("charge", d3.forceManyBody().strength(0.5)) // Nodes are attracted one each other of value is > 0
+        .force(
+          "collide",
+          d3.forceCollide().strength(0.01).radius(50).iterations(1)
+        ); // Force that avoids circle overlapping
+
+      // Apply these forces to the nodes and update their positions.
+      // Once the force algorithm is happy with positions ('alpha' value is low enough), simulations will stop.
+      simulation.nodes(collaboratorList).on("tick", function (d) {
+        sun.attr(
+          "transform",
+          (d) => `translate(${d.x}, ${d.y})scale(${d.size})`
+        );
+        moon.attr(
+          "transform",
+          (d) => `translate(${d.x}, ${d.y})scale(${d.size})`
+        );
+        star.attr(
+          "transform",
+          (d) => `translate(${d.x}, ${d.y})scale(${d.size})`
+        );
+      });
+    </script>
   </body>
 </html>

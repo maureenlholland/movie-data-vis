@@ -1815,6 +1815,113 @@
         .attr("text-anchor", (d) => (d.x0 < width / 2 ? "start" : "end"))
         .text((d) => d.id);
       // end sankey
+
+      // begin bar
+      const barContainer = document.getElementById("spikeLeeBar");
+      const barFormattedData = spikeData.movies
+        .reduce((collaborators, movie, i) => {
+          const actors = movie.actors.map((actor) => ({
+            ...actor,
+            job: "actor",
+          }));
+          const editor = movie.editor.map((editor) => ({
+            ...editor,
+            job: "editor",
+          }));
+          const dop = movie.dop.map((dop) => ({ ...dop, job: "dop" }));
+          const people = [...actors, ...editor, ...dop];
+
+          if (i > 0) {
+            const updatedCollaborators = [...collaborators];
+            people.forEach((person) => {
+              const existingIndex = collaborators.findIndex(
+                (collaborator) => collaborator.id === person.id
+              );
+              if (existingIndex >= 0) {
+                updatedCollaborators[existingIndex].appearances += 1;
+              } else {
+                updatedCollaborators.push({ ...person, appearances: 1 });
+              }
+            });
+            return updatedCollaborators;
+          }
+
+          return people.map((collaborator) => ({
+            ...collaborator,
+            appearances: 1,
+          }));
+        }, [])
+        .filter((collaborator) => collaborator.appearances > 1);
+
+      const barCollaboratorList = barFormattedData.map((collaborator) => {
+        return {
+          name: collaborator.name,
+          job: collaborator.job,
+          appearances: collaborator.appearances,
+        };
+      });
+
+      const maxAppearances = d3.max(barCollaboratorList, (c) => c.appearances);
+
+      barCollaboratorList.sort((a, b) =>
+        d3.descending(a.appearances, b.appearances)
+      );
+
+      const margin = { top: 50, right: 30, bottom: 30, left: 150 };
+
+      const xScale = d3
+        .scaleLinear()
+        .domain([0, spikeData.movies.length]) // originally set scale by number of appearances, but I prefer seeing the number of collaborations based on total number of movies from the director
+        .range([margin.left, width - (margin.left + margin.right)]); // bar x axis
+
+      const yScale = d3
+        .scaleBand()
+        .domain(barCollaboratorList.map((c) => c.name)) // collaborator name
+        .range([margin.top, height - (margin.top + margin.bottom)]) // bar y axis
+        .paddingInner(0.5) // edit the inner padding value in [0,1]
+        .paddingOuter(0.5); // edit the outer padding value in [0,1
+
+      const colorScale = d3.scaleOrdinal(
+        ["dop", "editor", "actor"], // collaborator job
+        ["orange", "aliceblue", "gold"] // bar color
+      );
+
+      const barSvg = d3.select(barContainer);
+
+      barSvg
+        .append("g")
+        .selectAll("rect")
+        .data(barCollaboratorList)
+        .enter()
+        .append("rect")
+        .attr("x", xScale(0))
+        .attr("y", (d) => yScale(d.name))
+        .attr("height", yScale.bandwidth())
+        .attr("width", (d) => xScale(d.appearances) - xScale(0))
+        .attr("fill", (d) => colorScale(d.job))
+        .attr("fill-opacity", (d) => {
+          // if (d.name === 'Thelma Schoonmaker') {
+          //   return 1;
+          // }
+          return 0.2;
+        })
+        .attr("stroke", (d) => colorScale(d.job))
+        .attr("stroke-width", 1)
+        .attr("title", (d) => d.name);
+
+      barSvg
+        .append("g")
+        .attr("transform", `translate(0,${margin.top})`)
+        .call(d3.axisTop(xScale).ticks(spikeData.movies.length));
+
+      barSvg
+        .append("g")
+        .attr("transform", `translate(${margin.left}, 0)`)
+        .call(d3.axisLeft(yScale));
+
+      barSvg.selectAll(".tick *").attr("fill", "white").attr("stroke", "white");
+      barSvg.select(".domain").attr("stroke", "white");
+      // end bar
     </script>
   </body>
 </html>

@@ -4,15 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Director Galaxies</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Yesteryear&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-sankey/0.12.3/d3-sankey.min.js"></script>
   </head>
   <body>
-    <!-- svg container? -->
-    <!-- script for d3 -->
-    <svg id="spikeLee" />
+    <div class="wrapper">
+      <h1>Movie Director Galaxies</h1>
+      <h2>Spike Lee</h2>
+      <div class="container">
+        <svg id="spikeLeeForce" />
+      </div>
+      <div class="container">
+        <svg id="spikeLeeSankey" />
+      </div>
+      <div class="container">
+        <svg id="spikeLeeBar" />
+      </div>
+      <!-- <div class="card">
+        <h3>Credits:</h3>
+      </div> -->
+    </div>
     <script>
-      const container = document.getElementById("spikeLee");
-
       const spikeData = {
         name: "Spike Lee",
         id: 5281,
@@ -1542,17 +1559,18 @@
         ],
       };
 
-      // create svg container
-      //
       // set the dimensions and margins of the graph
       var width = 1000;
-      var height = 1000;
+      var height = 700;
+
+      // begin force
+      const forceContainer = document.getElementById("spikeLeeForce");
 
       // append the svg object to the body of the page
-      var svg = d3
-        .select(container)
-        .attr("width", width)
-        .attr("height", height);
+      var forceSvg = d3
+        .select(forceContainer)
+        .attr("viewBox", "0 0 " + width + " " + height)
+        .attr("preserveAspectRatio", "xMidYMid meet");
 
       const formattedData = spikeData.movies
         .reduce((collaborators, movie, i) => {
@@ -1601,9 +1619,7 @@
         };
       });
 
-      console.log(collaboratorList);
-
-      const moon = svg
+      const moon = forceSvg
         .selectAll(".moon")
         .data(collaboratorList.filter((d) => d.job === "editor"))
         .enter()
@@ -1612,7 +1628,7 @@
         .attr("d", "M0,0 A30 30 0 1 1 -15 40 A20 20 0 1 0 0 0")
         .attr("fill", "aliceblue");
 
-      const sun = svg
+      const sun = forceSvg
         .selectAll(".sun")
         .data(collaboratorList.filter((d) => d.job === "dop"))
         .enter()
@@ -1623,7 +1639,7 @@
         .attr("r", 40)
         .attr("fill", "orange");
 
-      const star = svg
+      const star = forceSvg
         .selectAll(".star")
         .data(collaboratorList.filter((d) => d.job === "actor"))
         .join((enter) => {
@@ -1637,7 +1653,7 @@
           return g;
         });
 
-      const node = svg.selectAll(".sun, .moon, .star");
+      const node = forceSvg.selectAll(".sun, .moon, .star");
 
       var simulation = d3
         .forceSimulation()
@@ -1670,6 +1686,135 @@
           (d) => `translate(${d.x}, ${d.y})scale(${d.size})`
         );
       });
+      // end force
+
+      // begin sankey
+      const sankeyContainer = document.getElementById("spikeLeeSankey");
+
+      const sankeyFormattedData = spikeData.movies
+        .reduce((collaborators, movie, i) => {
+          const actors = movie.actors.map((actor) => ({
+            id: actor.name,
+            job: "actor",
+          }));
+          const editor = movie.editor.map((editor) => ({
+            id: editor.name,
+            job: "editor",
+          }));
+          const dop = movie.dop.map((dop) => ({
+            id: dop.name,
+            job: "dop",
+          }));
+          const people = [...actors, ...editor, ...dop];
+
+          const updatedCollaborators = [...collaborators];
+          people.forEach((person) => {
+            const existingIndex = collaborators.findIndex(
+              (collaborator) => collaborator.id === person.id
+            );
+            if (existingIndex >= 0) {
+              updatedCollaborators[existingIndex].appearances = [
+                ...updatedCollaborators[existingIndex].appearances,
+                movie.title,
+              ];
+            } else {
+              updatedCollaborators.push({
+                ...person,
+                appearances: [movie.title],
+              });
+            }
+          });
+          return updatedCollaborators;
+        }, [])
+        .filter((collaborator) => collaborator.appearances.length > 1)
+        .map((collaborator) => ({ ...collaborator, category: "collaborator" }));
+
+      const nodeData = [
+        ...sankeyFormattedData,
+        ...spikeData.movies.map((m) => ({ id: m.title, category: "movie" })),
+      ];
+
+      const linkData = sankeyFormattedData
+        .map((collaborator) => {
+          return collaborator.appearances.map((appearance) => ({
+            source: collaborator.id,
+            target: appearance,
+            value: 1,
+          }));
+        })
+        .flat();
+
+      const sankey = d3
+        .sankey()
+        .nodeId((d) => d.id)
+        .nodeWidth(5)
+        .nodePadding(10)
+        .extent([
+          [1, 2],
+          [width - 1, height - 5],
+        ]);
+
+      const { nodes, links } = sankey({ nodes: nodeData, links: linkData });
+
+      const jobColor = { editor: "aliceblue", dop: "orange", actor: "gold" };
+
+      const sankeySvg = d3
+        .select(sankeyContainer)
+        .attr("viewBox", [0, 0, width, height]);
+
+      sankeySvg
+        .append("g")
+        .attr("stroke", "#000")
+        .selectAll("rect")
+        .data(nodes)
+        .join("rect")
+        .attr("x", (d) => d.x0)
+        .attr("y", (d) => d.y0)
+        .attr("height", (d) => d.y1 - d.y0)
+        .attr("width", (d) => d.x1 - d.x0)
+        .attr("fill", (d) => {
+          return jobColor[d.job] || "black";
+        })
+        .text((d) => `${d.id}}`);
+
+      const link = sankeySvg
+        .append("g")
+        .attr("fill", "none")
+        .selectAll("g")
+        .data(links)
+        .join("g");
+
+      link
+        .append("path")
+        .attr("d", d3.sankeyLinkHorizontal())
+        // .attr("opacity", 0.2)
+        .attr("opacity", (d) => {
+          // if (d.source.id === 'Barry Alexander Brown') {
+          //   return 1;
+          // }
+          if (d.target.id === "Inside Man") {
+            return 1;
+          }
+          return 0.2;
+        })
+        .attr("stroke", (d) => jobColor[d.source.job])
+        .attr("stroke-width", (d) => Math.max(0.1, d.width));
+
+      link.append("title").text((d) => `${d.source.id} → ${d.target.id}`);
+
+      sankeySvg
+        .append("g")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", 10)
+        .selectAll("text")
+        .data(nodes)
+        .join("text")
+        .attr("x", (d) => (d.x0 < width / 2 ? d.x1 + 6 : d.x0 - 6))
+        .attr("y", (d) => (d.y1 + d.y0) / 2)
+        .attr("dy", "0.35em")
+        .attr("text-anchor", (d) => (d.x0 < width / 2 ? "start" : "end"))
+        .text((d) => d.id);
+      // end sankey
     </script>
   </body>
 </html>
